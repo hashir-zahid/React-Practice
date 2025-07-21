@@ -1,0 +1,79 @@
+#root {
+  margin: 20px;
+  padding: 20px;
+}
+
+.container {
+  display: block;
+  text-align: center;
+  border: 2px solid black;
+  width: 30vw;
+  height: 50vh;
+  margin: 50px 500px;
+  padding: 40px;
+  background-color: rgba(123, 125, 128, 0.274);
+  border-radius: 8px;
+}
+
+.input-task {
+  width: 250px;
+  height: 23px;
+  margin: 10px;
+  padding: 10px;
+  outline: none;
+  border-radius: 8px;
+  font-size: medium;
+  border:none
+}
+
+.btn-add {
+  width: 110px;
+  height: 45px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: large;
+  font-weight: bold;
+  background-color: rgb(4, 129, 108);
+  color: rgba(253, 254, 255, 0.884);
+  border:3px solid white;
+}
+
+ul {
+  border-top: 1px solid rgb(4, 129, 108);
+  display: block;
+  list-style-type: none;
+  padding: 20px;
+  margin: 10px;
+}
+
+li {
+  text-align: left;
+  padding: 2px;
+  margin: 5px;
+
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 1px 10px;
+  accent-color: rgb(7, 172, 62);
+}
+
+.display-task {
+  font-size: large;
+  font-weight: bold;
+  width: 100px;
+  height: 20px;
+  margin: 1px 10px;
+}
+
+.btn-delete {
+  width: 60px;
+  height: 20px;
+  margin: 1px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(168, 4, 4);
+  color: rgb(168, 4, 4);
+}
