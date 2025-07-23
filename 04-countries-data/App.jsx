@@ -23,7 +23,7 @@ function CountryInfo() {
         }
 
         const data = await response.json();
-        setCountryData(data[0]); // Take first result
+        setCountryData(data[0]); 
       } catch (err) {
         setError(err.message);
         setCountryData(null);
