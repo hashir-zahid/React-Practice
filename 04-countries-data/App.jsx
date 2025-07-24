@@ -8,22 +8,22 @@ function CountryInfo() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!countryName.trim()) return;
+    if (!countryName.trim()) {
+      return;
+    }
 
     const fetchCountryData = async () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(
-          `https://restcountries.com/v3.1/name/${countryName.trim()}`
-        );
-        
+        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName.trim()}`);
+
         if (!response.ok) {
           throw new Error('Country not found');
         }
 
         const data = await response.json();
-        setCountryData(data[0]); 
+        setCountryData(data[0]);
       } catch (err) {
         setError(err.message);
         setCountryData(null);
@@ -46,7 +46,7 @@ function CountryInfo() {
   return (
     <div className="country-info-container">
       <h1>Country Information Finder</h1>
-      
+
       <form onSubmit={handleSubmit} className="search-form">
         <input
           type="text"
@@ -55,7 +55,7 @@ function CountryInfo() {
           defaultValue="pakistan"
           className="country-input"
         />
-        <button 
+        <button
           type="submit"
           className="search-button"
         >
@@ -74,9 +74,9 @@ function CountryInfo() {
           <p>Population: {countryData.population?.toLocaleString() || 'N/A'}</p>
           <p>Region: {countryData.region}</p>
           {countryData.flags?.png && (
-            <img 
-              src={countryData.flags.png} 
-              alt={`Flag of ${countryData.name.common}`} 
+            <img
+              src={countryData.flags.png}
+              alt={`Flag of ${countryData.name.common}`}
               className="country-flag"
             />
           )}
