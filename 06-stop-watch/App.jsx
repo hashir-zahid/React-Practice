@@ -17,6 +17,7 @@ function App() {
     }
 
     return () => clearInterval(interval.current);
+    
   }, [isRunning]);
 
   const format = (num) => (num < 10 ? '0' + num : num);
