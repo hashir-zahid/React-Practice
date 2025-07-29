@@ -1,0 +1,41 @@
+.app-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  border: 3px solid rgb(1, 124, 104);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgb(1, 124, 103);
+  width: 30vw;
+  height: 35vh;
+  background-color: #fff;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #e6f7f5;
+}
+
+h1{
+  color:rgb(2, 78, 66) ;
+  margin-top: 1px;
+}
+
+.inp {
+  padding: 8px 10px;
+  width: 300px;
+  height: 30px;
+  font-size: larger;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  border: 3px solid rgb(1, 124, 104);
+  border-radius: 25px;
+  margin:10px 2px;
+}
+
+p{
+  margin-top: 25px;
+  font-size: larger;
+  color: rgb(1, 124, 104);
+}
