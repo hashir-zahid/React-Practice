@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.trash-container {
+  background-color: #f4fafc;
+  border: 2px solid #aac4d1;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  font-size: 20px;
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.267);
+  width: 420px;
+}
+
+.trash-container h3{
+  color: #0691cc;
+}
+
+.file-item {
+  padding: 12px;
+  margin: 12px 0;
+  background-color: #d1e7f2;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.file-item:hover {
+  background-color: #c0dbec;
+  transform: scale(1.02);
+}
+
+.trash-section {
+  margin-top: 24px;
+  border-top: 1px solid #b0cddf;
+  padding-top: 18px;
+  background-color: #dff0f7;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.trash-section div{
+  margin-top: 3px ;
+  padding-top: 3px;
+}
+
+.trash-section h4{
+  color: red;
+}
+
+.status-msg {
+  margin-top: 15px;
+  color: #2d4d64;
+  font-weight: bold;
+  font-size: 18px;
+}
