@@ -22,6 +22,7 @@ const TrashBin = () => {
           📄 {file}
         </div>
       ))}
+      
       <div className="trash-section">
         <h4>Trash Bin:</h4>
         {deleted.map((msg, i) => (
