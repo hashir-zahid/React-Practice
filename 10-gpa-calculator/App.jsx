@@ -1,32 +1,59 @@
 import React, { useState } from 'react';
-
 function GPACalculator() {
 
-  const[marks,setMarks] = useState('')
+  const [subjects, setSubjects] = useState([])
+  const [subject, setSubject] = useState({ id: '', name: '', marks: '', creditHours: '' })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setSubject(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleAdd = () =>{
+    setSubjects(prev => [...prev, { ...subject, id: Date.now() }])
+    setSubject({ id: '', name: '', marks: '', creditHours: '' })
+  }
 
   return (
     <>
-      <label htmlFor='subject'>Subject</label>
+      <label htmlFor='name'>Subject</label>
       <input type="text"
-        name='subject'
-        placeholder='Enetr Subject'
+        name='name'
+        placeholder='Eneter subject'
+        value={subject.title}
+        onChange={handleChange}
       />
 
       <label htmlFor='marks'>Marks</label>
-      <input type="text"
+      <input type="number"
         name='marks'
-        placeholder='Enetr Subject'
-        onChange={(e)=>{
-          setMarks(e.target.value)
-          console.log(e.target.value)
-        }}
+        placeholder='Enter marks'
+        value={subject.marks}
+        onChange={handleChange}
       />
 
-      <label htmlFor='gpa'>GPA</label>
-      <input type="text"
-        name='gpa'
-        placeholder='Enetr Subject'
+      <label htmlFor='creditHours'>Credit Hours</label>
+      <input type="number"
+        name='creditHours'
+        placeholder='Enter Subject'
+        value={subject.creditHours}
+        onChange={handleChange}
       />
+      <button onClick={handleAdd}>Add Subject</button>
+
+
+      <div className="display" style={{display:'flex'}}>
+        {subjects.map((prev) => (
+          <div key={prev.id}>
+            <p>{prev.name}</p>
+            <p>{prev.marks}</p>
+            <p>{prev.creditHours}</p>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
