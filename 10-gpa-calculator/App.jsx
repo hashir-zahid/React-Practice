@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
+// import './App.css';
 
 function GPACalculator() {
-
   const [subjects, setSubjects] = useState([{ name: '', marks: '', creditHours: '' }]);
-    const [gpa, setGpa] = useState(null);
+  const [gpa, setGpa] = useState(null);
 
-  
-    const handleInputChange = (index, e) => {
-      const { name, value } = e.target;
-      const list = [...subjects];
-      list[index][name] = value;
-      setSubjects(list);
-    };
+  const handleInputChange = (index, e) => {
+    const { name, value } = e.target;
+    const list = [...subjects];
+    list[index][name] = value;
+    setSubjects(list);
+  };
 
-  const handleAddSubject = () =>{
+  const handleAddSubject = () => {
     setSubjects([...subjects, { name: '', marks: '', creditHours: '' }]);
-  }
+  };
+
+  const handleRemoveSubject = (index) => {
+    const list = [...subjects];
+    list.splice(index, 1);
+    setSubjects(list);
+  };
 
   const calculateGPA = () => {
     let totalGradePoints = 0;
@@ -65,8 +70,9 @@ function GPACalculator() {
         totalGradePoints += gradePoint * creditHours;
         totalCreditHours += creditHours;
       }
+    });
 
-      if (totalCreditHours > 0) {
+    if (totalCreditHours > 0) {
       const calculatedGPA = totalGradePoints / totalCreditHours;
       setGpa(calculatedGPA.toFixed(2));
     }
@@ -74,8 +80,8 @@ function GPACalculator() {
       setGpa(null);
       alert('Please enter valid marks and credit hours');
     }
-    });
-  }
+  };
+
   return (
     <div className="container">
       <h1 className="title">GPA Calculator</h1>
