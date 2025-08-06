@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f4f8;
+  margin: 0;
+  padding: 0;
+  color: #2d3436;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: bolder;
+}
+
+.subject-card {
+  margin-left: 8%;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.404);
+  font-size: 14px;
+  width: 80%;
+}
+
+.subject-title {
+  text-align: center;
+  color: #0984e3;
+  font-size: 15px;
+  margin-bottom: 6px;
+  font-weight: bolder;
+}
+
+.form-group {
+  margin-bottom: 6px;
+  display: flex;
+}
+
+.form-group label {
+  display: block;
+  margin: 3px 10px;
+  font-size: 15px;
+  font-weight: bolder;
+  color: #2d3436;
+}
+
+input,
+select {
+  width: 50%;
+  padding: 6px 10px;
+  font-size: 15px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  border-radius: 4px;
+  border: 1px solid #dcdde1;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+select {
+  margin-left: 12px;
+  width: 55%;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #0984e3;
+  background-color: #fff;
+}
+
+.button-group {
+  display: flex;
+  gap: 235px;
+  margin: 20px;
+  margin-left: 60px;
+}
+
+.add-btn,
+.calc-btn,
+.remove-btn {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.add-btn {
+  background-color: #00b894;
+  color: #fff;
+}
+
+.add-btn:hover {
+  background-color: #019875;
+}
+
+.calc-btn {
+  background-color: #0984e3;
+  color: #fff;
+}
+
+.calc-btn:hover {
+  background-color: #066bbd;
+}
+
+.remove-btn {
+  background-color: #d63031;
+  color: #fff;
+  margin-top: 10px;
+  margin-left: 40%;
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+}
+
+.gpa-result {
+  margin-top: 20px;
+  margin-left: 8%;
+  padding: 18px;
+  background-color: #2d3436;
+  color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+  width: 78%;
+}
+
+.gpa-result h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.gpa-result p {
+  margin: 0;
+  font-size: 14px;
+  color: #dfe6e9;
+}
+
+@media (max-width: 480px) {
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-btn,
+  .calc-btn {
+    width: 100%;
+  }
+}
