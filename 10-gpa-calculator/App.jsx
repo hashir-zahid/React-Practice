@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import './App.css';
+import './App.css';
 
 function GPACalculator() {
   const [subjects, setSubjects] = useState([{ name: '', marks: '', creditHours: '' }]);
