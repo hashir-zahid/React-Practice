@@ -12,7 +12,7 @@ function App() {
 
   let obj = new Date(Date.now())
   let getFullYear = obj.getFullYear()
-  let getMonth = obj.getMonth()
+  let getMonth = obj.getMonth() + 1
   let getDate = obj.getDate()
 
   useEffect(() => {
@@ -20,55 +20,67 @@ function App() {
   }, [date, month, year])
 
   const handleDate = (value) => {
-    const num = Number(value)
 
     if (month === 2) {
-      if (num > 0 && num <= 28) setDate(num)
+      if (value <= 28) setDate(value)
     }
     else if (month % 2 === 1) {
-      if (num > 0 && num <= 31) setDate(num)
+      if (value <= 31) setDate(value)
     }
     else {
-      if (num > 0 && num <= 30) setDate(num)
+      if (value <= 30) setDate(value)
     }
   }
 
   const calculate = () => {
 
-    let calculateYears = parseInt(getFullYear) - year
-    let calculateMonths = parseInt(getMonth) - month
+    let calculateYears
+    let calculateMonths
     let calculateDays
     let temp
+
+    if (getMonth >= month) {
+      calculateYears = parseInt(getFullYear) - year
+      calculateMonths = parseInt(getMonth) - month
+    }
+    else {
+      calculateYears = Math.abs(parseInt(getFullYear) - year) - 1
+      calculateMonths = Math.abs((parseInt(getMonth) - month)) - 12
+    }
+
+
+
+
     if (getMonth === 2) {
       temp = 28 - parseInt(date)
       calculateDays = temp + parseInt(getDate)
-      if (calculateDays > 30) {
+      if (calculateDays >= 28) {
         calculateMonths += temp
-        calculateDays = calculateDays - 30
+        calculateDays = calculateDays - 28
       }
     }
 
     else if (getMonth % 2 === 1) {
       temp = 31 - parseInt(date)
       calculateDays = temp + parseInt(getDate)
-      if (calculateDays > 30) {
+      if (calculateDays >= 31) {
         calculateMonths += 1
-        calculateDays = calculateDays - 30
+        calculateDays = calculateDays - 31
       }
     }
 
     else {
       temp = 30 - parseInt(date)
       calculateDays = temp + parseInt(getDate)
-      if (calculateDays > 30) {
+      if (calculateDays >= 30) {
         calculateMonths += 1
         calculateMonths = calculateDays - 30
       }
     }
 
-    setCalculatedYear(calculateYears)
-    setCalculatedMonth(calculateMonths)
-    setCalculatedDate(calculateDays)
+    setCalculatedYear(Math.abs(calculateYears))
+    setCalculatedMonth(Math.abs(calculateMonths))
+    setCalculatedDate(Math.abs(calculateDays))
 
     setIsCalculated(true)
 
@@ -94,7 +106,7 @@ function App() {
           type="number"
           value={month}
           onChange={(e) => (
-            (e.target.value <= 12) && setMonth(e.target.value))}/>
+            (e.target.value <= 12) && setMonth(e.target.value))} />
       </label>
 
       <label htmlFor="date">
