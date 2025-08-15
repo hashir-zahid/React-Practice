@@ -9,6 +9,15 @@ body {
   height: 20vh;
   border: 2px solid black;
   justify-content: center;
+  padding: 20px;
+}
+
+.toast {
+  visibility:hidden;
+}
+.toast.show {
+  visibility: visible;
+  opacity: 1;
 }
 
 .inp {
@@ -16,15 +25,16 @@ body {
   width: 60%;
   height: 40px;
   font-size: larger;
+  cursor:text;
 }
 
 .btn {
-  /* border: none; */
   width: 20%;
   background-color: blue;
   color: antiquewhite;
   height: 40px;
-  margin-bottom: 12px
+  margin-bottom: 12px;
+  cursor: pointer;
 }
 
 .input {
