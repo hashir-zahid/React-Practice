@@ -15,6 +15,7 @@ body {
 .toast {
   visibility:hidden;
 }
+
 .toast.show {
   visibility: visible;
   opacity: 1;
