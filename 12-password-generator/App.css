@@ -12,15 +12,6 @@ body {
   padding: 20px;
 }
 
-.toast {
-  visibility:hidden;
-}
-
-.toast.show {
-  visibility: visible;
-  opacity: 1;
-}
-
 .inp {
   width: 60%;
   height: 40px;
