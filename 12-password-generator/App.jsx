@@ -40,24 +40,23 @@ function App() {
     setPassword(pass)
   }
 
-  const handleCopy = () => {
+  const handleCopy = (e) => {
     navigator.clipboard.writeText(password);
 
-    const toast = document.getElementsByClassName("toast");
-    toast.classList.add("show");
+    const btn = e.target
+    btn.innerText = "Copied"
 
     setTimeout(() => {
-      toast.classList.remove("show");
+      btn.innerText="Copy"
     }, 2000);
   };
 
 
   return (
     <div className='container'>
-      <div className='toast'>Password is copied!</div>
       <div className="input">
         <input type="text" className='inp' maxLength="20" value={password} disabled />
-        <button className='btn' onClick={handleCopy}>Copy</button>
+        <button className='btn' onClick={(e)=>handleCopy(e)}>Copy</button>
       </div>
 
       <input
