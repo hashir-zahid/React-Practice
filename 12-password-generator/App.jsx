@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -43,47 +43,56 @@ function App() {
   const handleCopy = (e) => {
     navigator.clipboard.writeText(password);
 
+
     const btn = e.target
-    btn.innerText = "Copied"
+    btn.innerText = "Copied!"
 
     setTimeout(() => {
-      btn.innerText="Copy"
+      btn.innerText = "Copy"
     }, 2000);
   };
 
 
   return (
-    <div className='container'>
+    <div className="container">
+      <h2>Password Generator</h2>
       <div className="input">
-        <input type="text" className='inp' maxLength="20" value={password} disabled />
-        <button className='btn' onClick={(e)=>handleCopy(e)}>Copy</button>
+        <input type="text" className="inp" maxLength="20" value={password} disabled />
+        <button className="btn" onClick={(e) => handleCopy(e)}>Copy</button>
       </div>
 
-      <input
-        type="range"
-        min="8"
-        max="20"
-        value={size}
-        onChange={(e) => setSize(e.target.value)}
-      />
-      <label>{size}</label>
-      <br />
+      <div className="range-container">
+        <input
+          type="range"
+          min="8"
+          max="20"
+          value={size}
+          onChange={(e) => setSize(e.target.value)}
+        />
+        <label>{size}</label>
+      </div>
 
-      <input type="checkbox"
-        checked={isNumber}
-        onChange={() => setIsNumber(!isNumber)}
-      />
-      <label htmlFor="">Numbers</label>
-      <br />
+      <div className="options">
+        <label>
+          <input
+            type="checkbox"
+            checked={isNumber}
+            onChange={() => setIsNumber(!isNumber)}
+          />
+          Numbers
+        </label>
 
-      <input type="checkbox"
-        checked={isSpecial}
-        onChange={() => setIsSpecial(!isSpecial)}
-      />
-      <label htmlFor="">Special Characters</label>
-      <br />
+        <label>
+          <input
+            type="checkbox"
+            checked={isSpecial}
+            onChange={() => setIsSpecial(!isSpecial)}
+          />
+          Special Characters
+        </label>
+      </div>
 
-      <button onClick={handleGenerate}>Generate</button>
+      <button className="generate-btn" onClick={handleGenerate}>Generate</button>
     </div>
   )
 }
