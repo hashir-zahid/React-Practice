@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 
 function App() {
@@ -10,80 +10,78 @@ function App() {
   const [calculatedYear, setCalculatedYear] = useState("")
   const [isCalculated, setIsCalculated] = useState(false)
 
-  let obj = new Date(Date.now())
-  let getFullYear = obj.getFullYear()
-  let getMonth = obj.getMonth() + 1
-  let getDate = obj.getDate()
+  let today = new Date()
+  let currentDay = today.getDate()
+  let currentMonth = today.getMonth() + 1
+  let currentYear = today.getFullYear()
 
-  useEffect(() => {
-    setIsCalculated(false)
-  }, [date, month, year])
+  const isLeapYear = (y) => (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0)
 
-  const handleDate = (value) => {
+  const daysInMonth = (m, y) => {
+    if (m === 2) return isLeapYear(y) ? 29 : 28
+    if ([4, 6, 9, 11].includes(m)) return 30
+    return 31
+  }
 
-    if (month === 2) {
-      if (value <= 28) setDate(value)
+  const handleMonthChange = (value) => {
+    const m = parseInt(value)
+    if (m >= 1 && m <= 12) {
+      setMonth(m)
+      if (date && parseInt(date) > daysInMonth(m, year || currentYear)) {
+        setDate("")
+      }
+    } else {
+      setMonth("")
     }
-    else if (month % 2 === 1) {
-      if (value <= 31) setDate(value)
+  }
+
+  const handleDateChange = (value) => {
+    const d = parseInt(value)
+    const m = parseInt(month)
+    const y = parseInt(year) || currentYear
+
+    if (!m) {
+      setDate(value) 
+      return
     }
-    else {
-      if (value <= 30) setDate(value)
+
+    const maxDays = daysInMonth(m, y)
+    if (d >= 1 && d <= maxDays) {
+      setDate(d)
+    } else {
+      setDate("")
     }
   }
 
   const calculate = () => {
+    let d = parseInt(date)
+    let m = parseInt(month)
+    let y = parseInt(year)
 
-    let calculateYears
-    let calculateMonths
-    let calculateDays
-    let temp
+    if (!d || !m || !y) return
 
-    if (getMonth >= month) {
-      calculateYears = parseInt(getFullYear) - year
-      calculateMonths = parseInt(getMonth) - month
-    }
-    else {
-      calculateYears = Math.abs(parseInt(getFullYear) - year) - 1
-      calculateMonths = Math.abs((parseInt(getMonth) - month)) - 12
-    }
+    let cDay = currentDay
+    let cMonth = currentMonth
+    let cYear = currentYear
 
-
-
-
-    if (getMonth === 2) {
-      temp = 28 - parseInt(date)
-      calculateDays = temp + parseInt(getDate)
-      if (calculateDays >= 28) {
-        calculateMonths += temp
-        calculateDays = calculateDays - 28
-      }
+    if (d > cDay) {
+      cDay += daysInMonth(cMonth - 1, cYear)
+      cMonth -= 1
     }
 
-    else if (getMonth % 2 === 1) {
-      temp = 31 - parseInt(date)
-      calculateDays = temp + parseInt(getDate)
-      if (calculateDays >= 31) {
-        calculateMonths += 1
-        calculateDays = calculateDays - 31
-      }
+    if (m > cMonth) {
+      cMonth += 12
+      cYear -= 1
     }
 
-    else {
-      temp = 30 - parseInt(date)
-      calculateDays = temp + parseInt(getDate)
-      if (calculateDays >= 30) {
-        calculateMonths += 1
-        calculateMonths = calculateDays - 30
-      }
-    }
+    let calcDay = cDay - d
+    let calcMonth = cMonth - m
+    let calcYear = cYear - y
 
-    setCalculatedYear(Math.abs(calculateYears))
-    setCalculatedMonth(Math.abs(calculateMonths))
-    setCalculatedDate(Math.abs(calculateDays))
-
+    setCalculatedDate(calcDay)
+    setCalculatedMonth(calcMonth)
+    setCalculatedYear(calcYear)
     setIsCalculated(true)
-
   }
 
   return (
@@ -95,8 +93,8 @@ function App() {
           id='year'
           type="number"
           value={year}
-          onChange={(e) => (
-            (e.target.value <= getFullYear) && setYear(e.target.value))} />
+          onChange={(e) => setYear(e.target.value)}
+        />
       </label>
 
       <label htmlFor="month">
@@ -105,8 +103,8 @@ function App() {
           id="month"
           type="number"
           value={month}
-          onChange={(e) => (
-            (e.target.value <= 12) && setMonth(e.target.value))} />
+          onChange={(e) => handleMonthChange(e.target.value)}
+        />
       </label>
 
       <label htmlFor="date">
@@ -115,13 +113,17 @@ function App() {
           id="date"
           type="number"
           value={date}
-          onChange={(e) => handleDate(e.target.value)}
+          onChange={(e) => handleDateChange(e.target.value)}
         />
       </label>
 
-      <button onClick={calculate} disabled={isCalculated}>Calculate</button>
+      <button onClick={calculate}>Calculate</button>
 
-      {isCalculated && <p>your age is {calculatedYear} years {calculatedMonth} months and {calculatedDate} days</p>}
+      {isCalculated && (
+        <p>
+          Your age is {calculatedYear} years {calculatedMonth} months and {calculatedDate} days
+        </p>
+      )}
     </div>
   )
 }
