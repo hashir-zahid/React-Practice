@@ -1,4 +1,5 @@
 import React, { useId } from 'react'
+import './InputBox.css'
 
 function InputBox(
     label,
