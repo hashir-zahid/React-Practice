@@ -28,7 +28,6 @@ function InputBox(
                     disabled={currencyDisable}
                 />
             </div>
-            
             <div className="box2">
                 <p>Currency Type</p>
                 <select
