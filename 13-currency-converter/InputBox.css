@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.box1,
+.box2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.box1 label,
+.box2 p {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.box1 input {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0f2027;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.box1 input:focus {
+  background: #ffffff;
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.box1 input:disabled {
+  background: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.box1 input::placeholder {
+  color: #718096;
+  font-weight: 400;
+}
+
+.box2 select {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0f2027;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f2027' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+.box2 select:hover {
+  background-color: #ffffff;
+  border-color: #cbd5e0;
+}
+
+.box2 select:focus {
+  background: #ffffff;
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+  transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .box1,
+  .box2 {
+    width: 100%;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
