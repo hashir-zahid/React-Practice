@@ -26,5 +26,5 @@ export function useCurrency(currency) {
     dataFetch();
   }, [currency]);
 
-  return { data, loading };
+  return data;
 }
