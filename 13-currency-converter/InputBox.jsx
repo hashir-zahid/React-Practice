@@ -1,16 +1,15 @@
 import React, { useId } from 'react'
 import './InputBox.css'
 
-function InputBox(
+function InputBox({
     label,
     amount,
     onAmountChange,
     onCurrencyChange,
     currencyOptions = [],
     selectCurrency,
-    amountDisable,
-    currencyDisable
-) {
+    disabled = false,
+}) {
     const amountId = useId()
 
     return (
@@ -25,20 +24,22 @@ function InputBox(
                     placeholder='Amount'
                     value={amount}
                     onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}
-                    disabled={currencyDisable}
+                    disabled={disabled}
                 />
             </div>
             <div className="box2">
                 <p>Currency Type</p>
                 <select
-                    value={amount}
-                    onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}
-                    disabled={currencyDisable}
+                    value={selectCurrency}
+                    onChange={(e) => {
+                        onAmountChange && onAmountChange(Number(e.target.value))
+                        onCurrencyChange(e.target.value)
+                    }}
                 >
 
                     {currencyOptions.map((currency) => (
                         <option key={currency} value={currency}>
-                            {currency}
+                            {currency.toUpperCase()}
                         </option>
                     ))}
 
