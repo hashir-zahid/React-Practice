@@ -6,12 +6,22 @@ import './App.css'
 function App() {
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("pkr")
-  const [amount, setAmount] = useState(0)
-  const [convertedAmount, setConvertedAmont] = useState(0)
+  const [amount, setAmount] = useState()
+  const [convertedAmount, setConvertedAmount] = useState()
 
   const currencyInfo = useCurrency(from)
-
   const options = Object.keys(currencyInfo)
+
+  const swap = () => {
+    setFrom(to)
+    setTo(from)
+    setConvertedAmount(amount)
+    setAmount(convertedAmount)
+  }
+
+  const convert = () => {
+    setConvertedAmount(amount * currencyInfo[to])
+  }
 
   return (
     <div>
@@ -27,10 +37,12 @@ function App() {
             label="From"
             amount={amount}
             currencyOptions={options}
-            onCurrencyChange={(currency) => setAmount(amount)}
+            onCurrencyChange={(currency) => setFrom(currency)}
             selectCurrency={from}
             onAmountChange={(amount) => setAmount(amount)}
+            disabled={false}
           />
+
         </div>
 
         <div>
@@ -48,8 +60,8 @@ function App() {
             amount={convertedAmount}
             currencyOptions={options}
             onCurrencyChange={(currency) => setTo(currency)}
-            selectCurrency={from}
-            amountDisable
+            selectCurrency={to}
+            disabled={false}
           />
         </div>
 
